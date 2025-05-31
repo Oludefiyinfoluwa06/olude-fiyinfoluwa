@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Olude Fiyinfoluwa",
   description: "I craft beautiful, responsive web experiences that combine cutting-edge technology with intuitive design",
   icons: {
-    icon: '/assets/me.jpg',
+    icon: '/assets/favicon.png',
   },
 };
 
