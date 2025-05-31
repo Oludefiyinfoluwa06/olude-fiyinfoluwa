@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { handleSmoothScroll } from "@/utils/helpers.utils";
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentWord, setCurrentWord] = useState(0);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [currentWord, setCurrentWord] = useState<number>(0);
 
   const words = ["Full Stack", "Frontend", "Backend"];
 
@@ -31,13 +32,28 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             <div className="flex space-x-4 mb-8 opacity-0 animate-fade-in-up delay-200">
-              <Link href="#" className="p-2 text-gray-600 hover:text-indigo-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+              <Link
+                href="https://github.com/oludefiyinfoluwa06"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-gray-600 hover:text-indigo-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+              >
                 <Github size={24} />
               </Link>
-              <Link href="#" className="p-2 text-gray-600 hover:text-indigo-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+              <Link
+                href="https://linkedin.com/in/oludefiyinfoluwa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-gray-600 hover:text-indigo-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+              >
                 <Linkedin size={24} />
               </Link>
-              <Link href="#" className="p-2 text-gray-600 hover:text-indigo-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+              <Link
+                href="mailto:oludefiyinfoluwa06@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-gray-600 hover:text-indigo-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+              >
                 <Mail size={24} />
               </Link>
             </div>
@@ -71,6 +87,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up delay-900">
               <Link
                 href="#projects"
+                onClick={(e) => handleSmoothScroll(e, "#projects")}
                 className="group bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl hover:shadow-indigo-500/25 transition-all duration-300 flex items-center justify-center font-semibold text-lg hover:scale-105 hover:-translate-y-1"
               >
                 View My Work
@@ -78,6 +95,7 @@ const Hero = () => {
               </Link>
               <Link
                 href="#contact"
+                onClick={(e) => handleSmoothScroll(e, "#contact")}
                 className="group border-2 border-indigo-200 text-indigo-700 px-8 py-4 rounded-xl hover:bg-indigo-50 hover:border-indigo-300 transition-all duration-300 flex items-center justify-center font-semibold text-lg hover:scale-105 hover:-translate-y-1 backdrop-blur-sm"
               >
                 Let&rsquo;s Talk

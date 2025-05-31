@@ -4,7 +4,7 @@ import ProjectCard from "./project-card";
 import { Project } from "@/utils/types.utils";
 
 const Projects = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -85,7 +85,7 @@ const Projects = () => {
               Check out my complete portfolio on GitHub for more exciting projects and contributions
             </p>
             <a
-              href="https://github.com/your-username"
+              href="https://github.com/oludefiyinfoluwa06"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl hover:shadow-indigo-500/25 transition-all duration-300 hover:scale-105 hover:-translate-y-1 group"

@@ -1,5 +1,5 @@
 import { Project } from "@/utils/types.utils";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, User, Building2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,6 +32,26 @@ const ProjectCard = ({
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
 
+        <div className="absolute top-4 left-4 z-20">
+          <div className={`flex items-center px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm transition-all duration-300 ${
+            project.isPersonal
+              ? 'bg-emerald-500/90 text-white border border-emerald-400/30'
+              : 'bg-blue-500/90 text-white border border-blue-400/30'
+          }`}>
+            {project.isPersonal ? (
+              <>
+                <User size={12} className="mr-1" />
+                Personal
+              </>
+            ) : (
+              <>
+                <Building2 size={12} className="mr-1" />
+                Client
+              </>
+            )}
+          </div>
+        </div>
+
         <div className="absolute top-4 right-4 z-20 flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
           <Link
             href={project.link}
@@ -62,11 +82,12 @@ const ProjectCard = ({
 
       <div className="p-8">
         <div className="flex items-start justify-between mb-4">
-          <h3 className="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">
-            {project.title}
-          </h3>
-          <div className="ml-4 p-2 bg-indigo-50 rounded-lg group-hover:bg-indigo-100 transition-colors duration-300">
-            <ExternalLink size={16} className="text-indigo-600" />
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <h3 className="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors duration-300">
+                {project.title}
+              </h3>
+            </div>
           </div>
         </div>
 
@@ -75,12 +96,12 @@ const ProjectCard = ({
         </p>
 
         <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((tech: string, i: number) => (
+          {project.tech.map((tech: string, idx: number) => (
             <span
-              key={i}
+              key={idx}
               className="px-3 py-1 bg-gradient-to-r from-indigo-50 to-purple-50 text-indigo-700 rounded-full text-sm font-medium border border-indigo-100 hover:border-indigo-200 hover:bg-indigo-100 transition-all duration-200 hover:scale-105"
               style={{
-                animationDelay: `${400 + (index * 150) + (i * 50)}ms`
+                animationDelay: `${400 + (index * 150) + (idx * 50)}ms`
               }}
             >
               {tech}
@@ -111,7 +132,7 @@ const ProjectCard = ({
           )}
         </div>
 
-        <div className="mt-6 h-1 w-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full group-hover:w-full transition-all duration-500"></div>
+        <div className='mt-6 h-1 w-0 rounded-full group-hover:w-full transition-all duration-500 bg-gradient-to-r from-indigo-600 to-purple-600'></div>
       </div>
     </div>
   );

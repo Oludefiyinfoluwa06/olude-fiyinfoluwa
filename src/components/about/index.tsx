@@ -4,8 +4,8 @@ import { skills } from "@/utils/data.utils";
 import { Skill } from "@/utils/types.utils";
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [skillsVisible, setSkillsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [skillsVisible, setSkillsVisible] = useState<boolean>(false);
   const aboutRef = useRef(null);
   const skillsRef = useRef(null);
 
@@ -72,7 +72,7 @@ const About = () => {
               </h3>
               <div className="prose prose-lg text-gray-600 leading-relaxed">
                 <p className="mb-6">
-                  I&rsquo;m a passionate <strong className="text-indigo-600">Full Stack Web Developer</strong> with expertise in building modern, responsive web applications. With a focus on creating efficient, maintainable code, I deliver solutions that combine technical excellence with great user experience.
+                  I&rsquo;m a passionate <strong className="text-indigo-600">Software Engineer</strong> with expertise in building modern, responsive web applications. With a focus on creating efficient, maintainable code, I deliver solutions that combine technical excellence with great user experience.
                 </p>
                 <p>
                   My journey in development has led me to work with cutting-edge technologies and collaborate with amazing teams to bring innovative ideas to life.
@@ -126,11 +126,11 @@ const About = () => {
             <div className="relative space-y-8">
               <ExperienceCard
                 title="Part Time Web Developer"
-                company="Niphal"
-                location="Abuja, Nigeria"
+                company="Niphal International Ltd."
+                location="Abuja, Nigeria (Hybrid)"
                 period="November, 2023 - Present"
-                description="Led the end-to-end development of a church website and admin portal, built company's marketing site, and deployed promotional microsites."
-                techStack="JavaScript, React, Next.js, Express.js, MongoDB, Vercel, Git, SEO Tools"
+                description="Led the end-to-end development of a church website and admin portal, built company's website, and also handled a few other websites"
+                techStack="HTML, CSS, JavaScript, React, Next.js, Express.js, MongoDB"
                 delay={0}
               />
 
@@ -139,8 +139,8 @@ const About = () => {
                 company="Miroft"
                 location="Remote"
                 period="May, 2024 - November, 2024"
-                description="Developed flagship site for non-profit organization and engineered dynamic real-estate management portal."
-                techStack="JavaScript, Next.js, React, Vercel, Git"
+                description="Developed flagship site for non-profit organization and engineered dynamic real-estate informational website."
+                techStack="JavaScript, React.js, Next.js"
                 delay={200}
               />
 
@@ -149,37 +149,11 @@ const About = () => {
                 company="Sleeky Programmers Ltd"
                 location="Remote"
                 period="August 2024 - Present"
-                description="Built company marketing site, maintained educational website, co-led backend development for e-commerce platform and served as Technical Lead on a family app MVP."
+                description="Built company marketing site, maintained an educational website, led the backend development for an e-commerce platform for farmers and served as Technical Lead on a family app MVP."
                 techStack="JavaScript, Next.js, Nest.js, MongoDB, Paystack API, RESTful APIs, Git, Agile/Scrum"
                 delay={400}
               />
             </div>
-          </div>
-        </div>
-
-        <div className={`mt-20 transform transition-all duration-1000 delay-700 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-        }`}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: "50+", label: "Projects Completed" },
-              { number: "3+", label: "Years Experience" },
-              { number: "10+", label: "Technologies" },
-              { number: "100%", label: "Client Satisfaction" }
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-200/50 hover:border-indigo-200 hover:bg-white/80 transition-all duration-300 hover:-translate-y-1"
-                style={{ animationDelay: `${800 + index * 100}ms` }}
-              >
-                <div className="text-3xl md:text-4xl font-bold text-indigo-600 mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-600 font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

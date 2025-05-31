@@ -1,17 +1,17 @@
 import Link from "next/link";
 import { useState, useEffect, useRef, FormEvent } from "react";
-import { Github, Linkedin, Mail, MapPin, Phone, Twitter, Send, ArrowRight } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, MapPin, Phone, Send, ArrowRight } from "lucide-react";
 import { SocialLink } from "./social-link";
 import { ContactItem } from "./contact-item";
 
 const Contact = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
-  const [isVisible, setIsVisible] = useState(false);
-  const [formVisible, setFormVisible] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [subject, setSubject] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [formVisible, setFormVisible] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const sectionRef = useRef(null);
   const formRef = useRef(null);
@@ -133,20 +133,20 @@ const Contact = () => {
               <div className="flex space-x-4">
                 <SocialLink
                   icon={<Linkedin size={20} />}
-                  href="#"
+                  href="https://linkedin.com/in/oludefiyinfoluwa"
                   label="LinkedIn"
                   delay={800}
                 />
                 <SocialLink
                   icon={<Github size={20} />}
-                  href="#"
+                  href="https://github.com/oludefiyinfoluwa06"
                   label="GitHub"
                   delay={900}
                 />
                 <SocialLink
-                  icon={<Twitter size={20} />}
-                  href="#"
-                  label="Twitter"
+                  icon={<Instagram size={20} />}
+                  href="https://www.instagram.com/timothyolude"
+                  label="Instagram"
                   delay={1000}
                 />
                 <SocialLink
@@ -155,25 +155,6 @@ const Contact = () => {
                   label="Email"
                   delay={1100}
                 />
-              </div>
-            </div>
-
-            <div className={`mt-12 transform transition-all duration-1000 delay-900 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-            }`}>
-              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-
-                <div className="relative z-10">
-                  <h4 className="text-2xl font-bold mb-3">Quick Response</h4>
-                  <p className="text-indigo-100 mb-4">
-                    I typically respond within 24 hours. Let&rsquo;s start building something amazing together!
-                  </p>
-                  <div className="flex items-center text-sm">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></div>
-                    <span>Available for new projects</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -288,6 +269,8 @@ const Contact = () => {
             <span>or reach out directly at</span>
             <Link
               href="mailto:oludefiyinfoluwa06@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-indigo-600 hover:text-purple-600 font-semibold transition-colors duration-300 inline-flex items-center"
             >
               oludefiyinfoluwa06@gmail.com

@@ -3,27 +3,39 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { navLinks } from "@/utils/data.utils";
+import { NavLink } from "@/utils/types.utils";
+import { handleSmoothScroll } from "@/utils/helpers.utils";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      const sections = navLinks.map((link: NavLink) => link.href.replace('#', ''));
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(`#${section}`);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Services", href: "#services" },
-    { name: "Contact", href: "#contact" },
-  ];
 
   return (
     <nav
@@ -37,7 +49,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-4">
           <div className="flex-shrink-0">
             <Link
-              href="#"
+              href="#home"
+              onClick={(e) => handleSmoothScroll(e, "#home", setIsOpen)}
               className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
             >
               Olude Fiyinfoluwa
@@ -45,14 +58,25 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex space-x-8">
-            {navLinks.map((link) => (
+            {navLinks.map((link: NavLink) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="relative text-gray-700 hover:text-indigo-600 font-medium transition-colors duration-300 group"
+                onClick={(e) => handleSmoothScroll(e, link.href, setIsOpen)}
+                className={`relative font-medium transition-all duration-300 group ${
+                  activeSection === link.href
+                    ? "text-indigo-600"
+                    : "text-gray-700 hover:text-indigo-600"
+                }`}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 ${
+                    activeSection === link.href
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
               </Link>
             ))}
           </div>
@@ -60,6 +84,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <Link
               href="#contact"
+              onClick={(e) => handleSmoothScroll(e, "#contact", setIsOpen)}
               className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
             >
               Hire Me
@@ -84,15 +109,19 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/80 rounded-md transition-all duration-300"
+                onClick={(e) => handleSmoothScroll(e, link.href, setIsOpen)}
+                className={`block px-3 py-3 text-base font-medium rounded-md transition-all duration-300 ${
+                  activeSection === link.href
+                    ? "text-indigo-600 bg-indigo-50/80"
+                    : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50/80"
+                }`}
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="#contact"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleSmoothScroll(e, "#contact", setIsOpen)}
               className="block w-full text-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-3 rounded-md font-semibold hover:shadow-lg transition-all duration-300 mt-4"
             >
               Hire Me

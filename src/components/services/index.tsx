@@ -1,11 +1,13 @@
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/utils/data.utils";
 import { ServiceCard } from "./service-card";
 import { Service } from "@/utils/types.utils";
+import { handleSmoothScroll } from "@/utils/helpers.utils";
 
 const Services = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -90,10 +92,14 @@ const Services = () => {
               <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
                 Let&rsquo;s discuss how I can help bring your web development vision to life
               </p>
-              <button className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl inline-flex items-center">
+              <Link
+                href="#contact"
+                onClick={(e) => handleSmoothScroll(e, "#contact")}
+                className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl inline-flex items-center"
+              >
                 Get Started Today
                 <ArrowRight size={20} className="ml-2" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,5 +1,16 @@
 import { ReactNode } from "react";
 
+export type NavLink = {
+  name: string;
+  href: string;
+}
+
+export type SocialLink = {
+  icon: ReactNode;
+  href: string;
+  label: string;
+}
+
 export type Skill = {
   name: string;
   icon: ReactNode;
@@ -23,6 +34,7 @@ export type Project = {
   github?: string;
   link: string;
   tech: string[];
+  isPersonal: boolean;
 }
 
 export type Service = {
@@ -30,7 +42,7 @@ export type Service = {
   title: string;
   description: string;
   features: string[];
-  popular: boolean;
+  isPopular: boolean;
 }
 
 export type ContactProps = {

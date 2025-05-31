@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { Service } from "@/utils/types.utils";
 
-export const ServiceCard = ({ service, index, isVisible }: { service: Service, index: number, isVisible: boolean }) => {
+export const ServiceCard = ({
+  service,
+  index,
+  isVisible,
+}: {
+  service: Service;
+  index: number;
+  isVisible: boolean;
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -14,7 +22,7 @@ export const ServiceCard = ({ service, index, isVisible }: { service: Service, i
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {service.popular && (
+      {service.isPopular && (
         <div className="absolute -top-3 -right-3 z-10">
           <span className="bg-gradient-to-r from-orange-400 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
             Popular
@@ -26,7 +34,7 @@ export const ServiceCard = ({ service, index, isVisible }: { service: Service, i
         relative h-full bg-white rounded-2xl shadow-sm border border-gray-100
         transition-all duration-500 overflow-hidden
         ${isHovered ? 'shadow-2xl shadow-indigo-500/10 -translate-y-2' : 'hover:shadow-xl'}
-        ${service.popular ? 'ring-2 ring-indigo-200' : ''}
+        ${service.isPopular ? 'ring-2 ring-indigo-200' : ''}
       `}>
         <div className={`
           absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0
@@ -77,19 +85,6 @@ export const ServiceCard = ({ service, index, isVisible }: { service: Service, i
               </div>
             ))}
           </div>
-
-          <button className={`
-            group/btn w-full flex items-center justify-center px-6 py-3 rounded-xl font-semibold
-            transition-all duration-300 transform
-            ${service.popular
-              ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:shadow-indigo-500/25'
-              : 'bg-gray-50 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 border border-gray-200 hover:border-indigo-200'
-            }
-            ${isHovered ? 'scale-105' : ''}
-          `}>
-            <span>Learn More</span>
-            <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
-          </button>
         </div>
 
         <div className="absolute top-0 right-0 w-32 h-32 opacity-5">

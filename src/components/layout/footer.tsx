@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { BriefcaseBusiness, ChevronRight, Mail, MapPin } from "lucide-react";
+import { navLinks, socialLinks } from "@/utils/data.utils";
+import { NavLink, SocialLink } from "@/utils/types.utils";
+import { handleSmoothScroll } from "@/utils/helpers.utils";
 
 const Footer = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,19 +28,11 @@ const Footer = () => {
     return () => observer.disconnect();
   }, []);
 
-  const socialLinks = [
-    { icon: <Linkedin size={20} />, href: '#', label: 'LinkedIn' },
-    { icon: <Github size={20} />, href: '#', label: 'GitHub' },
-    { icon: <Twitter size={20} />, href: '#', label: 'Twitter' },
-    { icon: <Instagram size={20} />, href: '#', label: 'Instagram' },
-  ];
-
   return (
     <footer
       id="footer"
       className="bg-gradient-to-br from-gray-900 via-slate-800 to-indigo-900 text-white relative overflow-hidden"
     >
-      {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl"></div>
@@ -50,79 +45,85 @@ const Footer = () => {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}
         >
-          {/* Main Footer Content */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
-            {/* Brand Section */}
             <div className="lg:col-span-1">
               <div className="mb-6">
                 <h3 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">
                   Olude Fiyinfoluwa
                 </h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  Full Stack Developer specializing in modern web technologies and creating exceptional digital experiences.
+                  Software Engineer specializing in modern web technologies and creating exceptional digital experiences.
                 </p>
               </div>
 
-              {/* Social Links */}
               <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((link: SocialLink, index: number) => (
                   <Link
-                    key={social.label}
-                    href={social.href}
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group p-3 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 hover:border-indigo-400/50 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <span className="text-gray-300 group-hover:text-indigo-400 transition-colors duration-300">
-                      {social.icon}
+                      {link.icon}
                     </span>
                   </Link>
                 ))}
               </div>
             </div>
 
-            {/* Quick Links */}
             <div className="lg:col-span-1">
               <h4 className="text-xl font-semibold text-white mb-6 relative">
                 Quick Links
                 <div className="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
               </h4>
               <ul className="space-y-3">
-                {['Home', 'About', 'Projects', 'Services', 'Contact'].map((link, index) => (
-                  <li key={link}>
+                {navLinks.map((link: NavLink, index: number) => (
+                  <li key={link.name} className="flex items-center gap-2">
+                    <ChevronRight size={14} className="text-indigo-400" />
                     <Link
-                      href={`#${link.toLowerCase()}`}
-                      className="text-gray-300 hover:text-indigo-400 transition-colors duration-300 hover:translate-x-2 inline-block"
+                      href={link.href}
+                      onClick={(e) => handleSmoothScroll(e, link.href)}
+                      className="text-gray-300 hover:text-indigo-400 transition-all duration-300 hover:translate-x-2 group"
                       style={{ animationDelay: `${200 + index * 50}ms` }}
                     >
-                      {link}
+                      <span className="group-hover:underline underline-offset-2">
+                        {link.name}
+                      </span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Contact Info */}
             <div className="lg:col-span-1">
               <h4 className="text-xl font-semibold text-white mb-6 relative">
                 Get In Touch
                 <div className="absolute -bottom-2 left-0 w-12 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
               </h4>
               <div className="space-y-4">
-                <div className="flex items-center space-x-3 text-gray-300">
-                  <div className="p-2 bg-indigo-500/20 rounded-lg">
-                    <span className="text-indigo-400">📧</span>
+                <Link
+                  href="mailto:oludefiyinfoluwa06@gmail.com"
+                  className="flex items-center space-x-3 text-gray-300 hover:text-indigo-400 transition-colors duration-300 group"
+                >
+                  <div className="p-2 bg-indigo-500/20 rounded-lg group-hover:bg-indigo-500/30 transition-colors duration-300">
+                    <span className="text-indigo-400"><Mail size={20} /></span>
                   </div>
-                  <span>oludefiyinfoluwa06@gmail.com</span>
-                </div>
+                  <span className="group-hover:underline underline-offset-2">
+                    oludefiyinfoluwa06@gmail.com
+                  </span>
+                </Link>
                 <div className="flex items-center space-x-3 text-gray-300">
                   <div className="p-2 bg-indigo-500/20 rounded-lg">
-                    <span className="text-indigo-400">📍</span>
+                    <span className="text-indigo-400"><MapPin size={20} /></span>
                   </div>
                   <span>Keffi, Nasarawa, Nigeria</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-300">
                   <div className="p-2 bg-indigo-500/20 rounded-lg">
-                    <span className="text-indigo-400">💼</span>
+                    <span className="text-indigo-400"><BriefcaseBusiness size={20} /></span>
                   </div>
                   <span>Available for freelance</span>
                 </div>
