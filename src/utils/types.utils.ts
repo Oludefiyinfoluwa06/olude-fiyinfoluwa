@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { NotificationType } from "./enums.utils";
 
 export type NavLink = {
   name: string;
@@ -57,4 +58,11 @@ export type SocialLinkProps = {
   href: string;
   label: string;
   delay: number;
+}
+
+export type NotificationProps = {
+  type: NotificationType;
+  message: string;
+  isVisible: boolean;
+  onClose?: () => void;
 }

@@ -128,7 +128,7 @@ const About = () => {
                 title="Part Time Web Developer"
                 company="Niphal International Ltd."
                 location="Abuja, Nigeria (Hybrid)"
-                period="November, 2023 - Present"
+                period="November, 2023 - June, 2025"
                 description="Led the end-to-end development of a church website and admin portal, built company's website, and also handled a few other websites"
                 techStack="HTML, CSS, JavaScript, React, Next.js, Express.js, MongoDB"
                 delay={0}
