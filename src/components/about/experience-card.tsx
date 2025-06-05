@@ -50,12 +50,13 @@ export const ExperienceCard = ({
             <p className="text-indigo-600 font-semibold">{company}</p>
           </div>
           <div className="text-sm text-gray-500 mt-2 sm:mt-0">
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-col items-end space-y-1">
               <span className="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium">
                 {location}
               </span>
+
+              <p className="mt-1 text-right sm:text-left">{period}</p>
             </div>
-            <p className="mt-1 text-right sm:text-left">{period}</p>
           </div>
         </div>
 
