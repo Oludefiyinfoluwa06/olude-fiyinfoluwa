@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Developer Portfolio
 
-## Getting Started
+A personal portfolio website showcasing my projects, skills, and contact information. Built with Next.js and TypeScript, this portfolio serves as a single-page application that highlights my work in web development and provides an easy way to get in touch.
 
-First, run the development server:
+---
+
+## Table of Contents
+
+- [Developer Portfolio](#developer-portfolio)
+  - [Table of Contents](#table-of-contents)
+  - [Demo](#demo)
+  - [Features](#features)
+  - [Tech Stack](#tech-stack)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Project Structure](#project-structure)
+  - [Available Scripts](#available-scripts)
+  - [Deployment](#deployment)
+  - [Contact](#contact)
+
+---
+
+## Demo
+
+A live version of this portfolio is available at:
+**[https://oludefiyinfoluwa.vercel.app](https://oludefiyinfoluwa.vercel.app)**
+
+---
+
+## Features
+
+- **Home / Landing Section**
+
+  - Brief introduction and professional tagline.
+  - A profile image.
+  - Navigation bar linking to the main sections: About, Projects, Services, Contact.
+
+- **About Section**
+
+  - Short bio explaining background, experience, and current focus areas.
+  - Horizontal bars or circular progress indicators to display proficiency levels for all skills.
+  - Icons for each skill (e.g., JavaScript, TypeScript, React, Next.js, NestJS, MongoDB, RESTful APIs, Git/GitHub).
+
+- **Projects Showcase**
+
+  - Card layout for each project tile.
+  - Project title, description, tech stack badges, and links to live site and/or GitHub repository.
+
+- **Services Section**
+
+  - Card layout for each service offered.
+  - Each card includes an icon, service title, and brief description.
+  - A “Popular” badge displayed at the top corner of services most in demand.
+
+- **Contact Form**
+
+  - A form (Name, Email, Subject, Message) that sends submissions via SMTP (configured with Gmail).
+  - Client‐side validation and a success/error message upon submission.
+
+- **Responsive Design**
+  - Fully responsive layout for desktop, tablet, and mobile devices.
+  - CSS transitions and hover effects for interactivity.
+
+---
+
+## Tech Stack
+
+- **Framework & Languages**
+
+  - [Next.js](https://nextjs.org/) (with TypeScript)
+  - [React](https://reactjs.org/)
+
+- **Styling**
+
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [Lucide React](https://lucide.dev/icons/)
+  - [React Icons](https://react-icons.github.io/react-icons/)
+
+- **Backend / API (for contact form)**
+
+  - [Repository](https://github.com/oludefiyinfoluwa06/olude-fiyinfoluwa-api)
+  - [Node.js](https://nodejs.org/) / [Express.js](https://expressjs.com/)
+  - [Nodemailer](https://nodemailer.com/)
+
+- **Deployment**
+  - [Vercel](https://vercel.com/)
+
+---
+
+## Prerequisites
+
+- **Node.js** (v18.x or higher)
+- **npm**
+- A [Vercel](https://vercel.com/) account
+- Gmail with App Password enabled (for SMTP)
+
+---
+
+## Installation
+
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/oludefiyinfoluwa06/olude-fiyinfoluwa.git portfolio
+   cd portfolio
+   ```
+
+2. Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+3. Start the server
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## Project Structure
+
+```
+portfolio/
+├── public/
+├── src/
+│   ├── app/
+│   ├── components/
+│   └── utils/
+├── README.md
+```
+
+---
+
+## Available Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push to GitHub
+2. Connect repo to Vercel
+3. Click “Deploy”
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Contact
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Email:** [oludefiyinfoluwa06@gmail.com](mailto:oludefiyinfoluwa06@gmail.com)
+- **LinkedIn:** [linkedin.com/in/oludefiyinfoluwa](https://linkedin.com/in/oludefiyinfoluwa)
+- **GitHub:** [github.com/oludefiyinfoluwa06](https://github.com/oludefiyinfoluwa06)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
