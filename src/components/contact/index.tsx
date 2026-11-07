@@ -90,6 +90,11 @@ const Contact = () => {
         response.data.message ||
           'Your message has been sent successfully! I\'ll get back to you soon.',
       );
+
+      setName('');
+      setEmail('');
+      setSubject('');
+      setMessage('');
     } catch (error: any) {
       const errorMessage =
         error.response?.data?.error ||
@@ -98,10 +103,6 @@ const Contact = () => {
 
       showNotification(NotificationType.ERROR, errorMessage);
     } finally {
-      setName('');
-      setEmail('');
-      setSubject('');
-      setMessage('');
       setIsSubmitting(false);
     }
   };
